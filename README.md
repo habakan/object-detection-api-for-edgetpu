@@ -49,12 +49,12 @@ $ tar -xvzf VOCtrainval_11-May-2012.tar
 
 ```shell
 $ sudo nvidia-docker run -it -v /path-to-dir/pascalVOC/train/VOCdevkit/VOC2012:/data \
-		-v ~/objectdetection_train_and_convert_edgetpu/config:/config \
-		-v ~/objectdetection_train_and_convert_edgetpu/out:/output \
+		-v /path-to-repository/config:/config \
+		-v /path-to-repository/out:/output \
 		--name tfodapi tfodapi /bin/bash
 ```
 
-### Create tf-record
+### Create tf-record in container
 
 ```shell
 $ python object_detection/dataset_utils/create_tf_record.py \
@@ -62,7 +62,7 @@ $ python object_detection/dataset_utils/create_tf_record.py \
 		--output_dir=/data/tfrecord --label_map_path=/config/label_map.pb
 ```
 
-### Training
+### Training in container
 
 ```shell
 $ cd /models/research
@@ -74,7 +74,7 @@ $ python object_detection/legacy/train.py --logtostderr --pipeline_config_path \
 		/config/ssd_mobilenet_v1.config  --train_dir /output/train_model
 ```
 
-## Build Edge TPU model
+## Build Edge TPU model in container
 
 ### Convert tflite file
 

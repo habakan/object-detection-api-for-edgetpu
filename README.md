@@ -77,7 +77,7 @@ $ python object_detection/legacy/train.py --logtostderr --pipeline_config_path \
 ## [Option] Export Inference Graph
 ```shell
 $ python object_detection/export_inference_graph.py --input_type image_tensor \
-        --pipeline_config /output/train_model/pipeline.config \
+        --pipeline_config /output/train_model/pipeline.config_path \
         --trained_checkpoint_prefix /output/train_model/model.ckpt-200000 \
 		--output_directory /output/inference_model
 ```
